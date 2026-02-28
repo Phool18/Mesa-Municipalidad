@@ -1,0 +1,166 @@
+<div class="page">
+  <div class="form-card">
+
+    <!-- Encabezado -->
+    <div class="form-header">
+      <button class="btn-volver" (click)="cancelar()">← Volver</button>
+      <div>
+        <h2>{{ esEdicion ? '✏️ Editar Expediente' : '📝 Nuevo Expediente' }}</h2>
+        <p>{{ esEdicion ? 'Modifica los datos del expediente' : 'Registra un nuevo expediente en Mesa de Partes' }}</p>
+      </div>
+    </div>
+
+    <!-- Cargando datos (modo edición) -->
+    @if (cargando()) {
+      <div class="estado-carga">
+        <div class="spinner"></div>
+        <p>Cargando datos...</p>
+      </div>
+    }
+
+    <!-- Formulario -->
+    @if (!cargando()) {
+      <form [formGroup]="form" (ngSubmit)="guardar()" novalidate>
+
+        <!-- Sección: Identificación -->
+        <div class="seccion">
+          <p class="seccion-titulo">Identificación del Solicitante</p>
+          <div class="form-grid">
+
+            <!-- tipoDoc -->
+            <div class="form-group">
+              <label class="label req">Tipo de Documento</label>
+              <div class="radio-group">
+                @for (tipo of ['DNI', 'RUC']; track tipo) {
+                  <label
+                    class="radio-opt"
+                    [class.activo]="f['tipoDoc'].value === tipo"
+                  >
+                    <input type="radio" formControlName="tipoDoc" [value]="tipo" />
+                    {{ tipo === 'DNI' ? '🪪 DNI' : '🏢 RUC' }}
+                  </label>
+                }
+              </div>
+            </div>
+
+            <!-- nroDoc -->
+            <div class="form-group">
+              <label class="label req">Número de Documento</label>
+              <input
+                type="text"
+                formControlName="nroDoc"
+                [class.invalido]="f['nroDoc'].invalid && f['nroDoc'].touched"
+                [placeholder]="f['tipoDoc'].value === 'DNI' ? '8 dígitos' : '11 dígitos'"
+                [maxlength]="f['tipoDoc'].value === 'DNI' ? 8 : 11"
+              />
+              @if (f['nroDoc'].invalid && f['nroDoc'].touched) {
+                <span class="error">{{ errorNroDoc() }}</span>
+              }
+            </div>
+
+            <!-- solicitante -->
+            <div class="form-group ancho-completo">
+              <label class="label req">
+                {{ f['tipoDoc'].value === 'DNI' ? 'Nombre Completo' : 'Razón Social' }}
+              </label>
+              <input
+                type="text"
+                formControlName="solicitante"
+                [class.invalido]="f['solicitante'].invalid && f['solicitante'].touched"
+                placeholder="Mínimo 3 caracteres"
+              />
+              @if (f['solicitante'].invalid && f['solicitante'].touched) {
+                <span class="error">Obligatorio, mínimo 3 caracteres.</span>
+              }
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Sección: Trámite -->
+        <div class="seccion">
+          <p class="seccion-titulo">Datos del Trámite</p>
+          <div class="form-grid">
+
+            <!-- tramite -->
+            <div class="form-group">
+              <label class="label req">Tipo de Trámite</label>
+              <select
+                formControlName="tramite"
+                [class.invalido]="f['tramite'].invalid && f['tramite'].touched"
+              >
+                <option value="">— Seleccione —</option>
+                @for (t of tramites; track t) {
+                  <option [value]="t">{{ t }}</option>
+                }
+              </select>
+              @if (f['tramite'].invalid && f['tramite'].touched) {
+                <span class="error">Seleccione un tipo de trámite.</span>
+              }
+            </div>
+
+            <!-- fechaIngreso -->
+            <div class="form-group">
+              <label class="label req">Fecha de Ingreso</label>
+              <input
+                type="date"
+                formControlName="fechaIngreso"
+                [class.invalido]="f['fechaIngreso'].invalid && f['fechaIngreso'].touched"
+              />
+              @if (f['fechaIngreso'].invalid && f['fechaIngreso'].touched) {
+                <span class="error">La fecha es obligatoria.</span>
+              }
+            </div>
+
+            <!-- estado -->
+            <div class="form-group ancho-completo">
+              <label class="label req">Estado</label>
+              <div class="estado-group">
+                @for (e of estados; track e) {
+                  <label
+                    class="estado-opt"
+                    [class]="'estado-opt ' + (f['estado'].value === e ? 'activo-' + e.toLowerCase().replace(' ', '-') : '')"
+                  >
+                    <input type="radio" formControlName="estado" [value]="e" />
+                    {{ e }}
+                  </label>
+                }
+              </div>
+            </div>
+
+            <!-- observacion -->
+            <div class="form-group ancho-completo">
+              <label class="label">Observación <span class="opcional">(opcional)</span></label>
+              <textarea
+                formControlName="observacion"
+                rows="3"
+                maxlength="200"
+                placeholder="Observaciones relevantes..."
+              ></textarea>
+              <div class="contador">{{ (f['observacion'].value || '').length }}/200</div>
+            </div>
+
+          </div>
+        </div>
+
+        @if (esEdicion) {
+          <div class="seccion">
+            <p class="nota-codigo">
+              ℹ️ El <strong>código del expediente</strong> se genera automáticamente y no puede modificarse.
+            </p>
+          </div>
+        }
+
+        <!-- Acciones -->
+        <div class="form-acciones">
+          <button type="button" class="btn btn-secondary" (click)="cancelar()">Cancelar</button>
+          <button type="submit" class="btn btn-primary" [disabled]="guardando()">
+            {{ guardando() ? 'Guardando...' : (esEdicion ? 'Actualizar' : 'Registrar Expediente') }}
+          </button>
+        </div>
+
+      </form>
+    }
+
+  </div>
+</div>

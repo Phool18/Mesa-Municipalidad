@@ -1,0 +1,147 @@
+{
+  "expedientes": [
+    {
+      "id": "1",
+      "codigo": "E-2026-0001",
+      "tipoDoc": "DNI",
+      "nroDoc": "74851236",
+      "solicitante": "María Quispe",
+      "tramite": "Licencia de Funcionamiento",
+      "fechaIngreso": "2026-02-03",
+      "estado": "Recibido",
+      "observacion": ""
+    },
+    {
+      "id": "2",
+      "codigo": "E-2026-0002",
+      "tipoDoc": "DNI",
+      "nroDoc": "70398412",
+      "solicitante": "Juan Carlos Rojas",
+      "tramite": "Constancia de Posesión",
+      "fechaIngreso": "2026-02-04",
+      "estado": "En evaluación",
+      "observacion": "Falta adjuntar recibo de agua."
+    },
+    {
+      "id": "3",
+      "codigo": "E-2026-0003",
+      "tipoDoc": "RUC",
+      "nroDoc": "20604578777",
+      "solicitante": "Bodega El Buen Vecino S.A.C.A",
+      "tramite": "Licencia de Funcionamiento",
+      "fechaIngreso": "2026-02-05",
+      "estado": "Aprobado",
+      "observacion": "Revisar zonificación y compatibilidad de uso."
+    },
+    {
+      "id": "4",
+      "codigo": "E-2026-0004",
+      "tipoDoc": "DNI",
+      "nroDoc": "77123456",
+      "solicitante": "Rosa Milagros Huamán",
+      "tramite": "Autorización de Evento Vecinal",
+      "fechaIngreso": "2026-02-06",
+      "estado": "Aprobado",
+      "observacion": "Aprobado con horario máximo hasta las 22:00."
+    },
+    {
+      "id": "5",
+      "codigo": "E-2026-0005",
+      "tipoDoc": "RUC",
+      "nroDoc": "20567890123",
+      "solicitante": "Pollería Los Olivos E.I.R.L.",
+      "tramite": "Certificado de Inspección Técnica (ITSE)",
+      "fechaIngreso": "2026-02-07",
+      "estado": "En evaluación",
+      "observacion": "Programar inspección en local."
+    },
+    {
+      "id": "6",
+      "codigo": "E-2026-0006",
+      "tipoDoc": "DNI",
+      "nroDoc": "72445566",
+      "solicitante": "Luis Alberto Pacheco",
+      "tramite": "Solicitud de Copia de Documentos",
+      "fechaIngreso": "2026-02-08",
+      "estado": "Recibido",
+      "observacion": "Solicita copia simple de resolución."
+    },
+    {
+      "id": "7",
+      "codigo": "E-2026-0007",
+      "tipoDoc": "RUC",
+      "nroDoc": "20123456789",
+      "solicitante": "Constructora Norte Lima S.A.",
+      "tramite": "Solicitud de Certificado de Numeración",
+      "fechaIngreso": "2026-02-10",
+      "estado": "Observado",
+      "observacion": "Presentar plano de ubicación actualizado."
+    },
+    {
+      "id": "8",
+      "codigo": "E-2026-0008",
+      "tipoDoc": "DNI",
+      "nroDoc": "71223344",
+      "solicitante": "Carmen Gloria Salazar",
+      "tramite": "Constancia de Residencia",
+      "fechaIngreso": "2026-02-12",
+      "estado": "Aprobado",
+      "observacion": ""
+    },
+    {
+      "id": "9",
+      "codigo": "E-2026-0009",
+      "tipoDoc": "RUC",
+      "nroDoc": "20611122233",
+      "solicitante": "Ferretería Progreso S.A.C.",
+      "tramite": "Licencia de Funcionamiento",
+      "fechaIngreso": "2026-02-13",
+      "estado": "En evaluación",
+      "observacion": "Pendiente verificación de medidas de seguridad."
+    },
+    {
+      "id": "10",
+      "codigo": "E-2026-0010",
+      "tipoDoc": "DNI",
+      "nroDoc": "78901234",
+      "solicitante": "Pedro Enrique Medina",
+      "tramite": "Autorización de Comercio Ambulatorio (Temporal)",
+      "fechaIngreso": "2026-02-15",
+      "estado": "Observado",
+      "observacion": "Adjuntar croquis del punto solicitado."
+    },
+    {
+      "id": "11",
+      "codigo": "E-2026-0011",
+      "tipoDoc": "DNI",
+      "nroDoc": "70112233",
+      "solicitante": "Ana Lucía Chávez",
+      "tramite": "Solicitud de Atención de Parques y Jardines",
+      "fechaIngreso": "2026-02-18",
+      "estado": "Recibido",
+      "observacion": "Poda de árbol en parque zonal."
+    },
+    {
+      "id": "12",
+      "codigo": "E-2026-0012",
+      "tipoDoc": "RUC",
+      "nroDoc": "20699988877",
+      "solicitante": "Restaurante Sazón Norteño S.A.C.",
+      "tramite": "Certificado de Inspección Técnica (ITSE)",
+      "fechaIngreso": "2026-02-20",
+      "estado": "Aprobado",
+      "observacion": "Inspección conforme. Vigencia 1 año."
+    },
+    {
+      "id": "56b5",
+      "tipoDoc": "DNI",
+      "nroDoc": "12345678",
+      "solicitante": "Pepe",
+      "tramite": "Solicitud de Atención de Parques y Jardines",
+      "fechaIngreso": "2026-02-28",
+      "estado": "En evaluación",
+      "observacion": "Debe colocar nombre completo!",
+      "codigo": "E-2026-0001"
+    }
+  ]
+}

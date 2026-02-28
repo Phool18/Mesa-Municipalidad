@@ -1,0 +1,20 @@
+<div class="app-shell">
+  <nav class="top-nav">
+    <div class="nav-brand">
+      <span class="nav-escudo">🏛️</span>
+      <div>
+        <span class="nav-title">Mesa de Partes</span>
+        <span class="nav-district">Municipalidad Distrital de Los Olivos</span>
+      </div>
+    </div>
+    <span class="nav-anio">{{ anio }}</span>
+  </nav>
+
+  <main>
+    <router-outlet />
+  </main>
+
+  <footer class="app-footer">
+    Sistema de Registro de Expedientes &mdash; Municipalidad de Los Olivos &copy; {{ anio }}
+  </footer>
+</div>

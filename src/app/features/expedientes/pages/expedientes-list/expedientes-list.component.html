@@ -1,0 +1,101 @@
+<div class="page">
+  <!-- Encabezado -->
+  <div class="page-header">
+    <div class="header-left">
+      <span class="header-icon">📋</span>
+      <div>
+        <h1>Mesa de Partes</h1>
+        <p class="sub">Municipalidad Distrital de Los Olivos</p>
+      </div>
+    </div>
+    <button class="btn btn-primary" (click)="irANuevo()">+ Nuevo Expediente</button>
+  </div>
+
+  <!-- Buscador -->
+  <div class="search-bar">
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input
+        class="search-input"
+        type="text"
+        placeholder="Buscar por código, DNI/RUC o solicitante..."
+        [(ngModel)]="searchTerm"
+        (keyup.enter)="cargarExpedientes()"
+      />
+      @if (searchTerm) {
+        <button class="clear-btn" (click)="limpiarBusqueda()">✕</button>
+      }
+    </div>
+    <button class="btn btn-secondary" (click)="cargarExpedientes()">Buscar</button>
+  </div>
+
+  <!-- Conteo -->
+  <div class="stat-pill">
+    <strong>{{ expedientes().length }}</strong>&nbsp;expedientes
+  </div>
+
+  <!-- Spinner -->
+  @if (loading()) {
+    <div class="state-box">
+      <div class="spinner"></div>
+      <p>Cargando expedientes...</p>
+    </div>
+  }
+
+  <!-- Sin resultados -->
+  @if (!loading() && expedientes().length === 0) {
+    <div class="state-box">
+      <div class="empty-icon">🗂️</div>
+      <h3>No se encontraron expedientes</h3>
+      @if (!searchTerm) {
+        <button class="btn btn-primary" (click)="irANuevo()">+ Nuevo Expediente</button>
+      }
+    </div>
+  }
+
+  <!-- Tabla -->
+  @if (!loading() && expedientes().length > 0) {
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Código</th>
+            <th>Solicitante</th>
+            <th>Doc.</th>
+            <th>Trámite</th>
+            <th>Fecha Ingreso</th>
+            <th>Estado</th>
+            <th class="col-acciones">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (exp of expedientes(); track exp.id) {
+            <tr [class.fila-eliminar]="deletingId === exp.id">
+              <td><span class="codigo-tag">{{ exp.codigo }}</span></td>
+              <td>
+                <div class="sol-nombre">{{ exp.solicitante }}</div>
+                <div class="sol-doc">{{ exp.tipoDoc }}: {{ exp.nroDoc }}</div>
+              </td>
+              <td>{{ exp.tipoDoc }}</td>
+              <td class="col-tramite">{{ exp.tramite }}</td>
+              <td class="col-fecha">{{ exp.fechaIngreso | date: 'dd/MM/yyyy' }}</td>
+              <td>
+                <span class="badge" [ngClass]="badgeEstado(exp.estado)">{{ exp.estado }}</span>
+              </td>
+              <td class="col-acciones">
+                @if (deletingId === exp.id) {
+                  <span class="confirm-txt">¿Eliminar?</span>
+                  <button class="btn-sm btn-si" (click)="eliminar(exp.id!)">Sí</button>
+                  <button class="btn-sm btn-no" (click)="cancelarEliminar()">No</button>
+                } @else {
+                  <button class="btn-sm btn-editar" (click)="irAEditar(exp.id!)">✏️ Editar</button>
+                  <button class="btn-sm btn-eliminar" (click)="confirmarEliminar(exp.id!)">🗑️ Eliminar</button>
+                }
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>
