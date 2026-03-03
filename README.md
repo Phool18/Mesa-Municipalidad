@@ -1,4 +1,4 @@
-# Mesa de Partes — Municipalidad de Los Olivos
+# Mesa de Partes — Municipalidad de Los Olivos (Este fue un proyecto desarrollado para la empresa Lazarus. La presente versión corresponde a una prueba y no cuenta con derechos de autor ni uso comercial.)
 
 La **Municipalidad Distrital de Los Olivos** recibe a diario solicitudes en **Mesa de Partes**: licencias de funcionamiento para bodegas y restaurantes, constancias, autorizaciones para eventos vecinales, etc.  
 En días de alta demanda (campañas de formalización, ferias o inspecciones), el registro manual se vuelve lento: expedientes duplicados, códigos mal escritos y dificultad para encontrar un trámite.
